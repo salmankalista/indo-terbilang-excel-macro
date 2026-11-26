@@ -189,51 +189,51 @@ Public Sub RegisterIndoTerbilangFunctions()
     Dim argsParse As Variant
 
     argsTerbilang = Array( _
-        "Angka atau teks numerik (hingga 36 digit).", _
-        "Gaya huruf: lower, upper, title, atau sentence.", _
-        "Teks awalan sebelum kalimat hasil.", _
-        "Teks akhiran setelah kalimat hasil.", _
-        "Kata awalan negatif (default: minus).", _
-        "Kata pemisah desimal (default: koma).", _
-        "TRUE untuk membuang nol di akhir desimal teks." _
+        "Angka, sel, atau teks numerik (maks. 36 digit). Contoh: 1500000 atau ""12.50"".", _
+        "[Opsional] Gaya huruf: ""lower"" (default), ""upper"", ""title"", atau ""sentence"".", _
+        "[Opsional] Teks awalan sebelum kalimat hasil. Contoh: ""Terbilang:"".", _
+        "[Opsional] Teks akhiran setelah kalimat hasil. Contoh: ""rupiah"".", _
+        "[Opsional] Kata untuk tanda minus. Default: ""minus"" (mis. ""negatif"").", _
+        "[Opsional] Kata pemisah desimal. Default: ""koma"" (mis. ""titik"").", _
+        "[Opsional] TRUE untuk buang nol di akhir desimal teks. Default: FALSE." _
     )
     TryRegisterMacroOption "Terbilang", _
         "Mengonversi angka menjadi kalimat terbilang Bahasa Indonesia baku (EYD V / KBBI).", _
         "IndoTerbilang", argsTerbilang
 
     argsRupiah = Array( _
-        "Nominal angka atau teks numerik.", _
-        "Gaya huruf: lower, upper, title, atau sentence.", _
-        "Teks awalan sebelum kalimat hasil.", _
-        "Teks akhiran setelah satuan mata uang/sen.", _
-        "Kata awalan negatif (default: minus).", _
-        "Nama satuan mata uang (default: rupiah).", _
-        "TRUE untuk menyertakan sen jika > 0.", _
-        "Nama satuan pecahan (default: sen).", _
-        "Pembulatan >2 desimal: half-up atau truncate." _
+        "Nominal angka, sel, atau teks numerik. Contoh: 1250750.5 atau ""1250.50"".", _
+        "[Opsional] Gaya huruf: ""lower"" (default), ""upper"", ""title"", atau ""sentence"".", _
+        "[Opsional] Teks awalan sebelum kalimat hasil. Contoh: ""Jumlah:"".", _
+        "[Opsional] Teks akhiran setelah satuan mata uang/sen. Contoh: ""sah"".", _
+        "[Opsional] Kata untuk tanda minus. Default: ""minus"".", _
+        "[Opsional] Satuan mata uang utama. Default: ""rupiah"".", _
+        "[Opsional] TRUE (default) untuk menyertakan sen jika > 0; FALSE untuk dibulatkan.", _
+        "[Opsional] Satuan pecahan desimal. Default: ""sen"".", _
+        "[Opsional] Pembulatan >2 desimal: ""half-up"" (default) atau ""truncate""." _
     )
     TryRegisterMacroOption "TerbilangRupiah", _
         "Mengonversi nominal angka menjadi kalimat terbilang Rupiah beserta sen.", _
         "IndoTerbilang", argsRupiah
 
     argsFormat = Array( _
-        "Nominal angka atau teks numerik.", _
-        "Simbol mata uang (default: Rp).", _
-        "TRUE untuk spasi setelah simbol.", _
-        "Pemisah ribuan (default: .).", _
-        "Pemisah desimal (default: ,).", _
-        "Jumlah desimal (0-20) atau 'auto'.", _
-        "Pembulatan: half-up atau truncate.", _
-        "Format negatif: minus atau parentheses.", _
-        "TRUE untuk notasi ringkas (rb, jt, M, T).", _
-        "Maksimal desimal pada mode compact (0-6)." _
+        "Nominal angka, sel, atau teks numerik. Contoh: 1500000 atau ""1250.567"".", _
+        "[Opsional] Simbol mata uang. Default: ""Rp"" (isi """" jika tanpa simbol).", _
+        "[Opsional] TRUE (default) untuk spasi setelah simbol (""Rp 1.000,00"").", _
+        "[Opsional] Pemisah ribuan. Default: ""."".", _
+        "[Opsional] Pemisah desimal. Default: "","".", _
+        "[Opsional] Jumlah desimal 0-20 (default: 2) atau ""auto"".", _
+        "[Opsional] Mode pembulatan: ""half-up"" (default) atau ""truncate"".", _
+        "[Opsional] Format negatif: ""minus"" (default) atau ""parentheses"".", _
+        "[Opsional] TRUE untuk notasi ringkas (rb, jt, M, T). Default: FALSE.", _
+        "[Opsional] Maks. digit desimal saat mode compact (0-6). Default: 1." _
     )
     TryRegisterMacroOption "FormatRupiah", _
         "Memformat nominal menjadi string Rupiah secara deterministik atau ringkas (compact).", _
         "IndoTerbilang", argsFormat
 
     argsParse = Array( _
-        "Teks berformat Rupiah, mis. 'Rp 1.500.000,50' atau '(Rp 500.000)'." _
+        "Teks berformat Rupiah. Contoh: ""Rp 1.500.000,50"" atau ""(Rp 500.000)""." _
     )
     TryRegisterMacroOption "ParseRupiah", _
         "Mengekstrak teks Rupiah menjadi string numerik kanonik siap hitung.", _

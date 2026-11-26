@@ -52,7 +52,7 @@ Modul **Excel Macro / VBA (`.bas`)** tanpa dependensi eksternal (*zero dependenc
 5. Simpan file Anda dengan format **Excel Macro-Enabled Workbook (`.xlsm`)** atau **Excel Binary Workbook (`.xlsb`)** agar macro tidak hilang (jangan disimpan sebagai `.xlsx`).
 6. Sekarang Anda sudah bisa memakai rumus `=Terbilang(...)` dan `=TerbilangRupiah(...)` langsung di sel Excel!
 
-> **Tips:** Jika ingin deskripsi fungsi & keterangan parameter muncul rapi di kotak dialog **Insert Function (`fx`)**, tekan **`Alt + F8`**, ketik/pilih **`RegisterIndoTerbilangFunctions`**, lalu klik **Run** (cukup 1 kali per file/Add-In).
+> **Tips:** Untuk memunculkan tooltip deskripsi setiap parameter di kotak **`fx` (Insert Function)**, tekan **`Alt + F8`**, pilih **`RegisterIndoTerbilangFunctions`**, lalu klik **Run** (lihat bagian [Cara Menampilkan Tooltip Parameter Rumus](#cara-menampilkan-tooltip-parameter-rumus)).
 
 ### Cara 2: Pasang Permanen sebagai Excel Add-In (`.xlam`)
 
@@ -63,6 +63,26 @@ Gunakan cara ini jika Anda ingin rumus `=Terbilang(...)` otomatis tersedia di **
 3. *(Opsional)* Jalankan `RegisterIndoTerbilangFunctions` lewat **`Alt + F8`** atau Immediate Window (`Ctrl + G`).
 4. Simpan file melalui **`File` -> `Save As`**, ubah *Save as type* menjadi **`Excel Add-In (*.xlam)`** (Excel akan otomatis mengarahkan ke folder `AddIns`), lalu simpan dengan nama misalnya `IndoTerbilang.xlam`.
 5. Aktifkan Add-In melalui **`File` -> `Options` -> `Add-ins` -> `Manage: Excel Add-ins` -> `Go...`**, centang **IndoTerbilang**, lalu klik **OK**.
+
+---
+
+## Cara Menampilkan Tooltip Parameter Rumus
+
+Secara bawaan, Microsoft Excel **tidak menampilkan tooltip melayang otomatis di Formula Bar** untuk fungsi buatan VBA Macro (fitur tooltip melayang saat mengetik hanya didukung fungsi bawaan Excel atau Add-In C/C++ `.xll`). Namun, Anda tetap bisa memunculkan panduan parameter dengan sangat cepat memakai dua cara resmi Excel berikut:
+
+1. **Tekan `Ctrl + Shift + A` langsung saat mengetik rumus (Paling Cepat):**
+   - Ketik `=Terbilang(` atau `=TerbilangRupiah(` di sel, lalu tekan **`Ctrl + Shift + A`**.
+   - Excel langsung mengisi urutan seluruh nama parameter ke dalam formula bar sebagai panduan, misalnya:
+     `=Terbilang(Value, Style, Prefix, Suffix, NegativePrefix, DecimalWord, TrimTrailingDecimalZeros)`
+2. **Tekan `Ctrl + A` atau klik ikon `fx` (Dialog *Function Arguments* + Penjelasan Lengkap):**
+   - Jalankan macro **`RegisterIndoTerbilangFunctions`** sekali melalui **`Alt + F8`**.
+   - Setelah itu, ketik `=Terbilang(` lalu tekan **`Ctrl + A`** (atau klik ikon **`fx`** di kiri Formula Bar). Excel akan membuka form parameter interaktif berisi keterangan fungsi, nilai default, dan contoh pengisian tiap variabel dalam Bahasa Indonesia.
+   - *(Opsional)* Agar registrasi `fx` berjalan otomatis setiap kali workbook/Add-In dibuka, tambahkan kode berikut di objek **`ThisWorkbook`** pada VBA Editor:
+     ```vba
+     Private Sub Workbook_Open()
+         RegisterIndoTerbilangFunctions
+     End Sub
+     ```
 
 ---
 
