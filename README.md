@@ -87,6 +87,14 @@ Gunakan cara ini jika Anda ingin rumus `=Terbilang(...)` otomatis tersedia di **
 
 ---
 
+## Contoh Tampilan di Microsoft Excel
+
+Contoh penerapan langsung rumus `=Terbilang(...)` dan `=TerbilangRupiah(...)` di lembar kerja Microsoft Excel:
+
+![Contoh Hasil Rumus Terbilang dan TerbilangRupiah di Microsoft Excel](./docs/demo-excel.png)
+
+---
+
 ## Tutorial Pemakaian Praktis
 
 ### Tutorial 1: Rumus Kwitansi / Invoice Otomatis (Aman untuk Sel Kosong)
